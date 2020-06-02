@@ -1,0 +1,34 @@
+[[https://github.com/ibizaman/emacs-conflicts/workflows/CI/badge.svg]]
+
+* Goal
+
+~emacs-org-babel-conf~ provides enhancements for conf mode in Org Babel.
+
+** Support `:var`
+Allows ~$symbol~ to be replaced by its value using org-babel's ~:var~.
+
+#+begin_example org
+,#+begin_src conf :var hello=\"world\"
+one=1
+two=$hello
+,#+end_src
+#+end_example
+
+Becomes, after expansion:
+
+#+begin_example conf
+one=1
+two=world
+#+end_example
+
+* Installation
+
+Clone the repo locally and ~(require emacs-org-babel-conf)~ or with
+~use-package~ and [[https://github.com/raxod502/straight.el][straight]]:
+
+#+BEGIN_SRC elisp
+(use-package emacs-org-babel-conf
+  :straight (emacs-org-babel-conf :type git :host github :repo "ibizaman/emacs-org-babel-conf" :branch "master"))
+#+END_SRC
+
+This package has been tested with Emacs >= 26.
